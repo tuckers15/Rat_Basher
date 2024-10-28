@@ -1,6 +1,7 @@
 import arcade
 import constants
 from player import Player
+from pathlib import Path
 
 class GameView(arcade.Window):
     """
@@ -27,11 +28,41 @@ class GameView(arcade.Window):
         self.up_pressed = False
         self.down_pressed = False
 
-        # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        #Adding moving camera
+        self.camera = None
+
+        #Tile mapping
+        self.map = None
+
+        
 
     def setup(self):
         """ Set up the game and initialize the variables. """
+
+        #adding camera setup
+        self.camera = arcade.Camera(self.width, self.height)
+
+        # Get the path to the current script and navigate to map file location
+        map_path = Path(__file__).resolve().parent.parent / "tiled_map" / "map.tmj"
+
+        # Ensure the path is string-formatted for arcade to load
+        map_name = str(map_path)
+
+        # Layer specific options are defined based on Layer names in a dictionary
+        # Doing this will make the SpriteList for the platforms layer
+        # use spatial hashing for detection.
+        layer_options = {
+            "baseLayer": {
+                "use_spatial_hash": True,
+            },
+        }
+
+        # Read in the tiled map
+        self.tile_map = arcade.load_tilemap(map_name, constants.TILE_SCALING, layer_options)
+
+        # Initialize Scene with our TileMap, this will automatically add all layers
+        # from the map as SpriteLists in the scene in the proper order.
+        self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
         # Sprite lists
         self.player_list = arcade.SpriteList()
@@ -39,9 +70,16 @@ class GameView(arcade.Window):
         # Set up the player
         self.player_sprite = Player(":resources:images/animated_characters/female_person/femalePerson_idle.png",
                                     constants.SPRITE_SCALING)
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
+        self.player_sprite.center_x = constants.SCREEN_WIDTH/2
+        self.player_sprite.center_y = constants.SCREEN_HEIGHT/2
         self.player_list.append(self.player_sprite)
+
+        # --- Other stuff
+        # Set the background color
+        if self.tile_map.background_color:
+            arcade.set_background_color(self.tile_map.background_color)
+
+    
 
     def on_draw(self):
         """ Render the screen. """
@@ -49,8 +87,28 @@ class GameView(arcade.Window):
         # Clear the screen
         self.clear()
 
+        #camera 
+        self.camera.use()
+
+        self.scene.draw()
+
         # Draw all the sprites.
         self.player_list.draw()
+
+    def center_camera_to_player(self):
+        screen_center_x = self.player_sprite.center_x - (self.camera.viewport_width / 2)
+        screen_center_y = self.player_sprite.center_y - (
+            self.camera.viewport_height / 2
+        )
+
+        # Don't let camera travel past 0
+        if screen_center_x < 0:
+            screen_center_x = 0
+        if screen_center_y < 0:
+            screen_center_y = 0
+        player_centered = screen_center_x, screen_center_y
+
+        self.camera.move_to(player_centered)
 
     def update_player_speed(self):
 
@@ -74,6 +132,7 @@ class GameView(arcade.Window):
         # If using a physics engine, call update player to rely on physics engine
         # for movement, and call physics engine here.
         self.player_list.update()
+        self.center_camera_to_player()
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
