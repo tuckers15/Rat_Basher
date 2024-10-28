@@ -8,20 +8,23 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "DungeonCrawl_ProjectUtumnoTileset.tsx": {
+            "scaleInEditor": 1.03
+        },
         "map.tmj": {
             "scale": 0.1402,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1818.830242510699,
-                "y": 1572.7532097004282
+                "x": 1619.1155492154066,
+                "y": 1551.355206847361
             }
         },
         "map.tmx": {
-            "scale": 0.1402,
+            "scale": 0.16,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2738.944365192582,
-                "y": 1572.7532097004282
+                "x": 1900,
+                "y": 1740.625
             }
         }
     },
@@ -33,6 +36,8 @@
     ],
     "project": "rat_bash_map.tiled-project",
     "recentFiles": [
+        "map.tmj",
+        "DungeonCrawl_ProjectUtumnoTileset.tsx",
         "map.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"

@@ -53,7 +53,7 @@ class GameView(arcade.Window):
         # use spatial hashing for detection.
         layer_options = {
             "baseLayer": {
-                "use_spatial_hash": True,
+               
             },
         }
 
@@ -64,12 +64,22 @@ class GameView(arcade.Window):
         # from the map as SpriteLists in the scene in the proper order.
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
+        
+
         # Sprite lists
         self.player_list = arcade.SpriteList()
 
-        # Set up the player
-        self.player_sprite = Player(":resources:images/animated_characters/female_person/femalePerson_idle.png",
-                                    constants.SPRITE_SCALING)
+        #Load a sprite sheet
+        sprite_sheet = arcade.load_spritesheet("/Users/tucker/Documents/Rat_Basher/srcs/megaman-spritesheet.png", 
+                                                sprite_width=32, 
+                                                sprite_height=32,
+                                                columns=4,
+                                                count=4)
+
+        # Create a sprite using one of the frames
+        self.player_sprite = arcade.Sprite()
+        self.player_sprite.texture = sprite_sheet[1]  
+
         self.player_sprite.center_x = constants.SCREEN_WIDTH/2
         self.player_sprite.center_y = constants.SCREEN_HEIGHT/2
         self.player_list.append(self.player_sprite)
