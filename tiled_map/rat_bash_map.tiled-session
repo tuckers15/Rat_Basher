@@ -8,6 +8,22 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "map.tmj": {
+            "scale": 0.1402,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1818.830242510699,
+                "y": 1572.7532097004282
+            }
+        },
+        "map.tmx": {
+            "scale": 0.1402,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2738.944365192582,
+                "y": 1572.7532097004282
+            }
+        }
     },
     "last.imagePath": "/Users/tucker/Downloads",
     "map.height": 100,
@@ -17,6 +33,7 @@
     ],
     "project": "rat_bash_map.tiled-project",
     "recentFiles": [
+        "map.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
