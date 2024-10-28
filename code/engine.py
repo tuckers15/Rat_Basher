@@ -12,12 +12,12 @@ python -m arcade.examples.sprite_move_keyboard_better
 """
 import arcade
 import constants
-from windows import MyGame
+from windows import GameView
 
 
 def main():
     """ Main function """
-    window = MyGame(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants. SCREEN_TITLE)
+    window = GameView(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants. SCREEN_TITLE)
     window.setup()
     arcade.run()
 
