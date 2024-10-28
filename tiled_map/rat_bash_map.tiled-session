@@ -1,0 +1,22 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+    },
+    "last.imagePath": "/Users/tucker/Downloads",
+    "map.height": 100,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 125,
+    "openFiles": [
+    ],
+    "project": "rat_bash_map.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
