@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A python arcade game inspired by Fox's Always Sunny in Philadelphia.
+A python arcade game inspired by FX's Always Sunny in Philadelphia.
 
 
 ### Dependencies
