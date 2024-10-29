@@ -70,6 +70,7 @@ class GameView(arcade.Window):
         self.player_list = arcade.SpriteList()
 
         #Load a sprite sheet
+        #TODO: make relative for collaboration
         sprite_sheet = arcade.load_spritesheet("/Users/tucker/Documents/Rat_Basher/srcs/megaman-spritesheet.png", 
                                                 sprite_width=32, 
                                                 sprite_height=32,
